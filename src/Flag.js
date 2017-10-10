@@ -1,14 +1,15 @@
-import React, {PropTypes} from "react";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import availableFlags from "./flags.json5";
 import find from "lodash/collection/find";
 import countries from "!filter-loader?cca2,cca3!world-countries/countries.json";
 
-export default React.createClass({
+export default class extends Component {
   /**
    * React properties
    */
 
-  propTypes: {
+  static propTypes = {
     // Alternative text of the flag <img> HTML tag.
     alt: PropTypes.string,
 
@@ -35,39 +36,37 @@ export default React.createClass({
 
     // Width of the flag <img> HTML tag.
     width: PropTypes.number,
-  },
+  };
 
   /**
    * React lifecycle
    */
 
-  getDefaultProps() {
-    return {
-      basePath: "/img/flags",
+  static defaultProps = {
+    basePath: "/img/flags",
 
-      country: "_unknown",
+    country: "_unknown",
 
-      name: null,
+    name: null,
 
-      format: "png",
+    format: "png",
 
-      pngSize: 32,
+    pngSize: 32,
 
-      shiny: false,
+    shiny: false,
 
-      width: null,
+    width: null,
 
-      height: null,
+    height: null,
 
-      alt: null
-    };
-  },
+    alt: null
+  };
 
   // Get information about a country using the alpha-3 ISO code.
-  cca3To2(cca3) {
+  cca3To2 = (cca3) => {
     let country = find(countries, {"cca3": cca3});
     return country ? country.cca2 : "_unknown";
-  },
+  }
 
   /**
    * React render
@@ -113,4 +112,4 @@ export default React.createClass({
       />
     );
   }
-});
+}

@@ -1,10 +1,8 @@
-import React from "react";
+import React, { Component } from 'react';
 import Flag from "./Flag.js";
 
-const App = React.createClass({
-  getInitialState() {
-    return {};
-  },
+class App extends Component {
+  state = {};
 
   render() {
     return (
@@ -19,6 +17,6 @@ const App = React.createClass({
       </div>
     );
   }
-});
+}
 
 React.render(<App />, document.body);
